@@ -11,7 +11,6 @@ class _MyHomePageState extends State<PrincipalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
     );
   }
 
