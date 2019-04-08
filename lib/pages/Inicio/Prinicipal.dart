@@ -1,23 +1,26 @@
 import 'package:flutter/cupertino.dart';
+import 'package:capturefacturas/pages/Cargar/UpLoadImage.dart';
 import 'package:flutter/material.dart';
 import 'package:capturefacturas/main.dart';
 import 'package:capturefacturas/pages/Inicio/Tabs/Image.dart' as _firstTab;
 import 'package:capturefacturas/pages/Inicio/Tabs/profile.dart' as _secondTab;
 
 class PrincipalPage extends StatefulWidget {
-  _MyHomePageState createState() => _MyHomePageState();
-}
-class _MyHomePageState extends State<PrincipalPage> {
 
+  _PrincipalState createState() => _PrincipalState();
+
+}
+
+class _PrincipalState extends State<PrincipalPage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //body:UpLoadImage(),
       body: Tabs(),
 
 
     );
-
   }
 
 }
@@ -53,9 +56,15 @@ class TabsState extends State<Tabs> {
     //App Bar
     appBar: new AppBar(
       actions: <Widget>[
-        Container(
-          child: Icon(Icons.image),
-          margin: EdgeInsets.only(right: 40),
+        IconButton(
+          iconSize: 40,
+          icon: Icon(Icons.image),
+          tooltip: 'Lista de Gasolineras',
+          onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => UpLoadImage()),
+            );
+          },
         ),
       ],
       title: new Text(
@@ -65,6 +74,7 @@ class TabsState extends State<Tabs> {
           color: Colors.white,
         ),
       ),
+
       elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
       backgroundColor: PrimaryColor,
 
