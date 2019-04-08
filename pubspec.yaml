@@ -12,7 +12,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   # librerias usadas por jesus
-  firebase_database: ^2.0.2
+  firebase_core: ^0.3.4
 
 
   # librerias usadas por cesar
