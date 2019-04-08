@@ -39,64 +39,154 @@ class _UpLoadImageState extends State<UpLoadImage> {
 
 
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           backgroundColor: PrimaryColor,
           title: new Text('Subir nueva imagen'),
         ),
-        body:Column(
-          children: <Widget>[
-            image==null?uploadError():uploadArea(),
-            Container(
-              child: FlatButton(
-                  child: Text('Camara'),
-                  onPressed: _getimage
+        body:GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child:ListView(
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.8,
+                child: image==null?uploadError(context):uploadArea(context),
               ),
-            ),
-            Container(
-              child: FlatButton(
-                onPressed: _getimageGalery,
-                child: Text('Galeria'),
-              ),
-            ),
-          ],
+            ],
+          )
         )
     );
   }
 
-}
-
-Widget uploadError(){
-  return Column(
-    children: <Widget>[
-      Text("Seleccione una imagen"),
-    ],
-  );
-}
-
-Widget uploadArea(){
-  return Column(
-    children: <Widget>[
-      Image.file(image,width: 200,height: 100,),
-      RaisedButton(
-        color: Colors.blueAccent[800],
-        child: Text("Subir Firebase"),
-        onPressed: (){
-          uploadimagen();
-        },
+  //Text("Seleccione una imagen",textAlign: TextAlign.center,),
+  Widget uploadError(BuildContext context){
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Text("Seleccione una imagen",textAlign: TextAlign.center,),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: FlatButton(
+                      child: Text('Camara'),
+                      onPressed: _getimage
+                  ),
+                ),
+                Container(
+                  child: FlatButton(
+                    onPressed: _getimageGalery,
+                    child: Text('Galeria'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
-    ],
-  );
-}
+    );
+  }
 
-Future<String> uploadimagen() async{
-  StorageReference ref = FirebaseStorage.instance.ref().child(filename);
-  StorageUploadTask uploadTask =  ref.putFile(image);
+  Widget uploadArea(BuildContext context){
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            child: Image.file(image,height: MediaQuery.of(context).size.height * 0.5,),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: FlatButton(
+                      child: Text('Subir'),
+                      onPressed: uploadimagen
+                  ),
+                ),
+                Container(
+                  child: FlatButton(
+                    onPressed: deleteimagen,
+                    child: Text('Borrar'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: FlatButton(
+                      child: Text('Subir'),
+                      onPressed: uploadimagen
+                  ),
+                ),
+                Container(
+                  child: FlatButton(
+                    onPressed: deleteimagen,
+                    child: Text('Borrar'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-  var downUrl = await(await uploadTask.onComplete).ref.getDownloadURL();
+  /*Widget uploadArea2(){
+    return Column(
+      children: <Widget>[
+        Image.file(image,width: 200,height: 100,),
+        RaisedButton(
+          color: Colors.blueAccent[800],
+          child: Text("Subir Firebase"),
+          onPressed: (){
+            uploadimagen();
+          },
+        ),
+      ],
+    );
+  }*/
 
-  //Url de la imagen que se acaba de subir
-  var url = downUrl.toString();
+  Future<String> uploadimagen() async{
+    StorageReference ref = FirebaseStorage.instance.ref().child(filename);
+    StorageUploadTask uploadTask =  ref.putFile(image);
+    var downUrl = await(await uploadTask.onComplete).ref.getDownloadURL();
+    //Url de la imagen que se acaba de subir
+    var url = downUrl.toString();
 
 
-  return url;
+
+    deleteimagen();
+
+    return url;
+  }
+
+  Future<String> deleteimagen() async{
+    setState(() {
+      image = null;
+      filename = "";
+    });
+  }
+
 }
