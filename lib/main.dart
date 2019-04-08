@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'pages/Home.dart';
+
 void main() async {
   runApp(MyApp());
 }
 
-//const PrimaryColor = const Color( 0xff1f520a);
+const PrimaryColor = const Color( 0xff006981);
+const SecondaryColor = const Color( 0xff0f7069);
 
 /*var routes = <String, WidgetBuilder>{
   "/App": (BuildContext context) =>App(),
@@ -17,8 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         //  brightness: Brightness.light,
-          //primaryColor: PrimaryColor,
-          //accentColor: PrimaryColor,
+          primaryColor: PrimaryColor,
+          accentColor: PrimaryColor,
           textTheme: TextTheme(
               headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.w900),
               title: TextStyle(fontSize: 14.0, fontFamily: 'RobotoMono'),
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
           )
       ),
       debugShowCheckedModeBanner: false,
-      title: 'Tasks App',
+      title: 'Capture Facturas',
       home: home(),
     );
   }
