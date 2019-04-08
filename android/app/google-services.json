@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "598873849802",
+    "firebase_url": "https://capturefacturas-97d69.firebaseio.com",
+    "project_id": "capturefacturas-97d69",
+    "storage_bucket": "capturefacturas-97d69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598873849802:android:a5b8a0a1f0501d0b",
+        "android_client_info": {
+          "package_name": "com.example.capturefacturas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBggmr-PLJ0FxQiDRV1jQtu8uyBc2EERv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598873849802-jmd7hpnnji683vl5vre2332913o5dmp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
