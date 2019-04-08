@@ -44,8 +44,6 @@ class _UpLoadImageState extends State<UpLoadImage> {
           title: new Text('Subir nueva imagen'),
         ),
         body:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             image==null?uploadError():uploadArea(),
             Container(
@@ -78,7 +76,7 @@ Widget uploadError(){
 Widget uploadArea(){
   return Column(
     children: <Widget>[
-      Image.file(image,width: 200,height: 200,),
+      Image.file(image,width: 200,height: 100,),
       RaisedButton(
         color: Colors.blueAccent[800],
         child: Text("Subir Firebase"),
