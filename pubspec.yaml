@@ -13,6 +13,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   # librerias usadas por jesus
   firebase_core: ^0.3.4
+  firebase_storage: ^2.1.0+1
+  image_picker: ^0.3.0
+
 
   # librerias usadas por cesar
 
