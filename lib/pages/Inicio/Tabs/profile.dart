@@ -25,61 +25,15 @@ class _Profile extends State<Profile> {
         body:  ListView.builder(
           itemCount: 1,
           itemBuilder: (context, index) {
-            return new Column(
-             children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 200),
-            child:  Column(
+            return Column(
               children: <Widget>[
-                Text('Iniciar Sesion',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-
-                ),
-                GoogleSignInButton(onPressed: (){
-                  _signInWithGoogle();
-
-                },darkMode: true,)
 
               ],
-            ),
-          ),
-
-             ],
-
-
 
             );
-
-
 
           },
         ),
     );
-  }
-  void _signInWithGoogle() async {
-    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth =  await googleUser.authentication;
-    final AuthCredential credential =GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    final FirebaseUser user = await _auth.signInWithCredential(credential);
-    assert(user.displayName != null);
-    assert(await user.getIdToken() != null);
-
-    final FirebaseUser currentUser = await _auth.currentUser();
-    assert(user.uid == currentUser.uid);
-    setState(() {
-      if (user != null) {
-        _success = true;
-        _userID = user.uid;
-        Navigator.of(context).pushReplacement(CupertinoPageRoute(
-          builder:(context) => Home(),
-        ));
-      }
-    });
   }
 }

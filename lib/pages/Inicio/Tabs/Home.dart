@@ -13,7 +13,7 @@ class _Home extends State<Home> {
       body: Container(
         color: SecondaryColor,
         child: Center(
-          child: Text('HOLA DESDE HOME'),
+          child: Text('TE HAS LOGEADOOOOOOO'),
         ),
       ),
     );

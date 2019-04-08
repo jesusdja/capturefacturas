@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:capturefacturas/main.dart';
-import 'package:capturefacturas/pages/Inicio/Tabs/Home.dart'  as _firstTab;
-import 'package:capturefacturas/pages/Inicio/Tabs/Image.dart'as _secondTab;
-import 'package:capturefacturas/pages/Inicio/Tabs/profile.dart'  as _thirdTab;
+import 'package:capturefacturas/pages/Inicio/Tabs/Image.dart' as _firstTab;
+import 'package:capturefacturas/pages/Inicio/Tabs/profile.dart' as _secondTab;
 
 class PrincipalPage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
@@ -76,9 +75,8 @@ class TabsState extends State<Tabs> {
       controller: _tabController,
       onPageChanged: onTabChanged,
       children: <Widget>[
-        new _firstTab.Home(),
-        new _secondTab.Imagenes(),
-        new _thirdTab.Profile()
+        new _firstTab.Imagenes(),
+        new _secondTab.Profile(),
       ],
     ),
 
@@ -126,10 +124,6 @@ class TabsState extends State<Tabs> {
       case 1:
         this._title_app = TabItems[1].title;
         break;
-
-      case 2:
-        this._title_app = TabItems[2].title;
-        break;
     }
   }
 }
@@ -141,7 +135,6 @@ class TabItem {
 }
 
 const List<TabItem> TabItems = const <TabItem>[
-  const TabItem(title: 'Home', icon: Icons.home),
   const TabItem(title: 'Imagenes', icon: Icons.dashboard),
   const TabItem(title: 'Perfil', icon: Icons.account_circle)
 ];
