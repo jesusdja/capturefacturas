@@ -2,7 +2,7 @@ import 'package:capturefacturas/pages/Inicio/Tabs/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:capturefacturas/main.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -86,13 +86,13 @@ class _LoginPageState extends State<LoginPage> {
               color: PrimaryColor,
               textColor: Colors.white,
               onPressed: (){
-                FirebaseAuth.instance.signInWithEmailAndPassword(
+                /*FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: _emailController.text,
                     password: _passwordController.text,).then((FirebaseUser user){
                       Navigator.of(context).pushReplacement(CupertinoPageRoute(
                         builder: (context) => Profile(),
                       ));
-                });
+                });*/
 
               },
             ),

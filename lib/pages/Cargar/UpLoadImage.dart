@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:capturefacturas/main.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -39,11 +39,15 @@ class _UpLoadImageState extends State<UpLoadImage> {
 
 
     return Scaffold(
+        appBar: new AppBar(
+          backgroundColor: PrimaryColor,
+          title: new Text('Subir nueva imagen'),
+        ),
         body:Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            image==null?Text("Seleccione una imagen"):uploadArea(),
+            image==null?uploadError():uploadArea(),
             Container(
               child: FlatButton(
                   child: Text('Camara'),
@@ -61,6 +65,14 @@ class _UpLoadImageState extends State<UpLoadImage> {
     );
   }
 
+}
+
+Widget uploadError(){
+  return Column(
+    children: <Widget>[
+      Text("Seleccione una imagen"),
+    ],
+  );
 }
 
 Widget uploadArea(){
