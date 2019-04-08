@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class PrincipalPage extends StatefulWidget {
 
-  _MyHomePageState createState() => _MyHomePageState();
+  _PrincipalState createState() => _PrincipalState();
 }
 
-class _MyHomePageState extends State<PrincipalPage> {
+class _PrincipalState extends State<PrincipalPage> {
 
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
     );
   }
