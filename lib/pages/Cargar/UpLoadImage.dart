@@ -20,18 +20,24 @@ class _UpLoadImageState extends State<UpLoadImage> {
   Future _getimage() async{
     var selectImage = await ImagePicker.pickImage(source: ImageSource.camera);
 
-    setState(() {
-      image = selectImage;
-      filename = basename(image.path);
-    });
+    if(selectImage != null){
+      setState(() {
+        image = selectImage;
+        filename = basename(image.path);
+      });
+    }
   }
   Future _getimageGalery() async{
     var selectImage = await ImagePicker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      image = selectImage;
-      filename = basename(image.path);
-    });
+    if(selectImage != null){
+      setState(() {
+        image = selectImage;
+        filename = basename(image.path);
+      });
+    }
+
+
   }
 
   @override

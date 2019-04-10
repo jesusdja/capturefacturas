@@ -14,7 +14,7 @@ dependencies:
   # librerias usadas por jesus
   firebase_core: ^0.3.4
   firebase_storage: ^2.1.0+1
-  image_picker: ^0.3.0
+  image_picker: 0.5.3
 
 
 
